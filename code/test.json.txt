@@ -1,0 +1,12 @@
+{
+  "posts": [
+    { "id": 1, "title": "主页", "author": "zhuye" }
+    { "id": 2, "title": "动物", "author": "dongwu" }
+    { "id": 3, "title": "植物", "author": "zhiwu" }
+  ],
+  "comments": [
+    { "id": 1, "body": "1.1 comment", "postId": 1 }
+    { "id": 2, "body": "1.2 comment", "postId": 1 }
+    { "id": 3, "body": "2 comment", "postId": 2 }
+  ],
+}
