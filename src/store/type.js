@@ -1,0 +1,1 @@
+export const SIDEMENU= "sidemenu_actopn";
