@@ -2,6 +2,7 @@ const initialState = {
     token: window.localStorage.getItem('token') || '',
     userInfo: JSON.parse(window.localStorage.getItem('userInfo')) || null
   };
+  
   const loginReducer = function (state = initialState, action) {
     const newState = { ...state };
     switch (action.type) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import { withRouter } from "react-router-dom";
 
-import { useHistory,useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { getMenuData } from "../../api";
 import { mapMenuData } from "../../utils/sideutils";
 const { Sider } = Layout;
@@ -70,9 +70,8 @@ function SideMenu(props) {
       console.log(datas);
       delete datas[0].children;
       setMenu(datas);
-     
-
-    });
+    },[]);
+   
     const currentMenu = JSON.parse(
       window.localStorage.getItem("currentMenu") || "[]"
     );
@@ -80,6 +79,7 @@ function SideMenu(props) {
   }, []);
 
   useEffect(() => {
+    //当前选中
     const keys =
       JSON.parse(window.localStorage.getItem("currentSelectMenu")) ||
       location.pathname;
@@ -102,19 +102,25 @@ function SideMenu(props) {
 
   return (
     <div>
-      <Sider trigger={null} collapsible collapsed={props.collapsed}>
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={props.collapsed}
+        style={{ height: "100vh" }}
+      >
         <div
           style={{
             fontSize: "18px",
             color: "white",
-            width: "180px",
             height: "40px",
             lineHeight: "40px",
             margin: "10px 10px",
             backgroundColor: "gray",
+            overflow: "hidden",
+            textAlign:"center"
           }}
         >
-          全球新闻发布管理系统
+          {props.collapsed ? " News" : "全球新闻发布管理系统"}
         </div>
         <Menu
           theme="dark"

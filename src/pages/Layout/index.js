@@ -29,8 +29,11 @@ export default function NewsLayout() {
             style={{
               margin: "24px 16px",
               padding: 24,
-              minHeight: 500,
+              minHeight: 280,
+              maxHeight:500,
               backgroundColor: "white",
+              overflow:"auto"
+              
             }}
           >
             <Switch>

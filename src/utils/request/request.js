@@ -3,7 +3,7 @@ import store from '../../store';
 
 // axios.defaults.baseURL = 'http://localhost:8080';
 // axios.defaults.timeout = 1000 * 10;
-const http=axios.create({
+export const http=axios.create({
     baseURL :'http://localhost:8080',
     timeout:3000
 })

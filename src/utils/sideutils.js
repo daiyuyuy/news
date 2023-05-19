@@ -25,9 +25,6 @@ export function mapMenuData(datas) {
 //   return item.pagepermisson === 1 && rights.includes(item.key);
 // };
 
-// const checkPagepermission = (item) => {
-//   return item.pagepermission;
-// };
 // 递归处理数据
 function deepDatas(datas) {
   return datas.map((item) => {
@@ -38,14 +35,28 @@ function deepDatas(datas) {
     };
     // fix console bug,rightId无法在Dom根组件渲染
     delete currentData.rightId;
-    //     if (item.children?.length>0 && isShowAside(item)) {
-    //       currentData.children = deepDatas(item.children);
-    //     }
-    //     return isShowAside(item) && currentData;
-    if (item.children?.length > 0 ) {
-      currentData.children = deepDatas(item.children);
+    // if (item.children?.length>0 && isShowAside(item)) {
+    //   currentData.children = deepDatas(item.children);
+    // }
+    // return isShowAside(item) && currentData;
+    if (item.children?.length > 0) {
+      // currentData.children = deepDatas(item.children);
+
+      //筛选出pagepermisson === 1的数据，渲染到侧边栏
+      // const chn = deepDatas(item.children);
+      // const chnn=chn.filter((x) => {
+      //   return x.pagepermisson === 1;
+      // });
+      // currentData.children=chnn
+      currentData.children = deepDatas(item.children).filter((x) => {
+        return x.pagepermisson === 1;
+      });
+      // if (item.pagepermisson === 1) {
+      //   return (currentData.children = chn);
+      // }
     }
-    return  currentData;
+
+    return currentData;
   });
 }
 // 根据菜单生成对应的 icon
