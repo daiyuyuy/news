@@ -8,7 +8,7 @@ import {
  
 } from "../../../api";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-// import { http } from "../../../utils/request/request";
+import { http } from "../../../utils/request/request";
 const { confirm } = Modal;
 export default function RightList() {
   const [dataSource, setDataSource] = useState([]);
@@ -72,7 +72,7 @@ export default function RightList() {
                 </div>
               }
               title="页面配置项"
-              trigger={item.pagepermisson ? "click" : ""}
+              trigger={item.pagepermisson===undefined ? "" : "click"}
             >
               <Button
                 type="primary"
@@ -121,15 +121,15 @@ export default function RightList() {
     console.log(item);
 
     setDataSource([...dataSource]);
-    // if (item.grade === 1) {
-    //  http.patch(`/rights/${item.id}`,{
-    //   pagepermisson :item.pagepermisson 
-    //  })
-    // }else{
-    //   http.patch(`/children/${item.id}`,{
-    //     pagepermisson :item.pagepermisson 
-    //    })
-    // }
+    if (item.grade === 1) {
+     http.patch(`/rights/${item.id}`,{
+      pagepermisson :item.pagepermisson 
+     })
+    }else{
+      http.patch(`/children/${item.id}`,{
+        pagepermisson :item.pagepermisson 
+       })
+    }
   };
   return (
     <div>

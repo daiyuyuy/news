@@ -28,3 +28,33 @@ export function getMenuData() {
     return request('get', '/rights?_embed=children');
   }
 
+//超级用户列表（角色名称）
+export function getSuperUser(){
+  return request('get','/roles')
+}
+export function deleteSuperUser(id){
+  return request('delete',`/roles/${id}`)
+}
+//更新选中的树型权限
+// export function patchCurrentList(rights){
+//   return request('patch','/roles',{rights})
+// }
+
+//获取用户名称(联合role，按照roleId拼对象)
+export function getUserInfo(){
+  return request('get','/users?_expand=role')
+  // return request('get','/users')
+}
+
+//删除用户
+export function deleteUser(id){
+  return request('delete',`/users/${id}`)
+}
+//获取区域
+export function getUserRegion(){
+  return request('get','/regions')
+}
+//获取用户
+export function getUser(){
+  return request('get','/users')
+}
